@@ -1,3 +1,4 @@
+// filepath: d:\NEXT JS\paytm-clone\src\app\signin\page.tsx
 "use client";
 
 import { useState } from "react";
@@ -5,10 +6,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const SignUp = () => {
+const SignIn = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    username: "",
     email: "",
     password: "",
   });
@@ -22,47 +22,28 @@ const SignUp = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle sign up logic here
+    // Handle sign in logic here
     console.log("Form submitted:", formData);
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      {" "}
       <div className="max-w-md w-full bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="bg-[#00B9F1] py-1 px-6 flex justify-center"></div>
 
         <div className="p-8">
           <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
-            Create Your Account
+            Sign In to Your Account
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label
-                htmlFor="username"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Username
-              </label>{" "}
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00B9F1] focus:border-transparent transition"
-                placeholder="Enter username"
-                required
-              />
-            </div>
             <div>
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Email Address
-              </label>{" "}
+              </label>
               <input
                 type="email"
                 id="email"
@@ -74,13 +55,14 @@ const SignUp = () => {
                 required
               />
             </div>
+
             <div>
               <label
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Password
-              </label>{" "}
+              </label>
               <input
                 type="password"
                 id="password"
@@ -88,26 +70,26 @@ const SignUp = () => {
                 value={formData.password}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00B9F1] focus:border-transparent transition"
-                placeholder="Create a password"
+                placeholder="Enter your password"
                 required
-                minLength={6}
               />
-            </div>{" "}
+            </div>
+
             <button
               type="submit"
               className="w-full bg-[#00B9F1] hover:bg-[#00a3d6] text-white py-3 rounded-lg transition duration-300 font-medium focus:outline-none focus:ring-2 focus:ring-[#008bbc] focus:ring-offset-2"
             >
-              Sign Up
+              Sign In
             </button>
           </form>
 
           <p className="mt-8 text-center text-sm text-gray-600">
-            Already have an account?{" "}
+            Don't have an account?{" "}
             <span
               className="text-[#00B9F1] hover:text-[#00a3d6] font-medium cursor-pointer"
-              onClick={() => router.push("/signin")}
+              onClick={() => router.push("signup")}
             >
-              Sign In
+              Sign Up
             </span>
           </p>
         </div>
@@ -116,4 +98,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;
