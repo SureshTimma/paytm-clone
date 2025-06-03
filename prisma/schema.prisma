@@ -8,7 +8,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model bank_balance {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  balance String
+  userId  String @db.ObjectId
+
+  @@map("bank-balance")
+}
+
 model users {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  email String
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  email    String
+  password String
 }
