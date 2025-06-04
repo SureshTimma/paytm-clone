@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const SignUp = () => {
   const router = useRouter();
@@ -20,10 +19,10 @@ const SignUp = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle sign up logic here
-    console.log("Form submitted:", formData);
+    const response = await axios.post("/api/signup", formData);
+    console.log(response.data);
   };
 
   return (
@@ -90,7 +89,6 @@ const SignUp = () => {
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00B9F1] focus:border-transparent transition"
                 placeholder="Create a password"
                 required
-                minLength={6}
               />
             </div>{" "}
             <button
