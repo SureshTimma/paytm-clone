@@ -14,7 +14,6 @@ export const GET = async () => {
 };
 
 export const PUT = async (req:NextRequest) => {
-  const userId = NextRequest.
   const userBalance = await prisma.bank_balance.update({
     where: { id: "683e7d34691e0af66dc27bd3" },
     data: { balance: "1000" },

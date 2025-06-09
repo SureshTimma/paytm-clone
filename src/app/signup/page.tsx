@@ -22,7 +22,7 @@ const SignUp = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const response = await axios.post("/api/signup", formData);
-    console.log(response.data);
+    console.log(response);
   };
 
   return (

@@ -4,13 +4,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const SignIn = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    redirect: false,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,10 +22,9 @@ const SignIn = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle sign in logic here
-    console.log("Form submitted:", formData);
+    const result = await signIn("credentials", formData);
   };
 
   return (
